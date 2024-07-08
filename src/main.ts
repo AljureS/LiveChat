@@ -17,17 +17,7 @@ async function bootstrap() {
   
   io.on('connection', (socket)=>{
 
-    console.log("Clientes conectados: ", io.engine.clientsCount);
-    console.log('user connected', socket.id);
-
-    // socket.on("disconnect", ()=>{
-    //   console.log('Socket ', socket.id, " is disconnected");
-    // })
-
-    socket.conn.once("upgrade", ()=>{
-      console.log('changged from HTTP Long-Polling to', socket.conn.transport.name);
-      
-    })
+    
   })
   
   await app.init();
