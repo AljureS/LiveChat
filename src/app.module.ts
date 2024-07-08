@@ -10,7 +10,7 @@ import { join } from 'path';
   imports: [
     ChatModule, 
     ServeStaticModule.forRoot({
-      rootPath: join(__dirname, '..', 'src', 'views', 'index.html'),
+      rootPath: join(__dirname, '..', 'src', 'views'),
     })
   ],
   controllers: [AppController],
