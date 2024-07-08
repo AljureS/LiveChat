@@ -17,7 +17,16 @@ async function bootstrap() {
   
   io.on('connection', (socket)=>{
 
-    
+    //Basic Emition
+    socket.emit('welcomeMessage', 'Welcome to LiveChat user with ID: ' + socket.id)
+
+    //Basic Listener 
+    socket.on("serverWelcome", (data)=>{
+      console.log(data);
+    })
+
+    //Total Emition
+    io.emit("everyone", socket.id + ' joined the chat')
   })
   
   await app.init();
