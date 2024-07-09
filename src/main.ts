@@ -17,6 +17,10 @@ async function bootstrap() {
   
   io.on('connection', (socket)=>{
 
+    socket.on('circlePosition', (position)=>{
+      socket.broadcast.emit('moveCircle', position)
+    })
+
   })
   
   await app.init();
