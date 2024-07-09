@@ -17,7 +17,26 @@ async function bootstrap() {
   
   io.on('connection', (socket)=>{
 
-    
+    socket.on('joinRoom', (room)=>{
+      
+      switch (room) {
+        case 'room1':
+          socket.join('room1'); //* Si la sala no existe se crea en automatico 
+          break;
+      
+        case 'room2':
+          socket.join('room2');
+          break;
+
+        case 'room3':
+          socket.join('room3');
+          break;
+
+        default:
+          break;
+      }
+
+    })
 
   })
   
