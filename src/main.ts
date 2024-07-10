@@ -15,12 +15,18 @@ async function bootstrap() {
   // Create an instace of Socket.io using the HTTP server 
   const io = new Server(httpServer)
   
-  io.on('connection', (socket)=>{
-
+  const teachers = io.of('/teachers') // Namespace de teeachers  
+  const students = io.of('/students')
+  
+  teachers.on('connect', (socket) => {
+    console.log(socket.id + "Connected to the teachers namespace");
     
-
   })
   
+  students.on('connect', (socket) => {
+    console.log(socket.id + "Connected to the students namespace");
+  })
+
   await app.init();
   await httpServer.listen(3000);
 
