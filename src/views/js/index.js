@@ -10,12 +10,12 @@ const chat = document.querySelector('#chat')
 const namespace = document.querySelector('#namespace')
 
 if (profes.includes(user)) {
-    socketNameSpace= io("/teachers")
-    group = "teachers"
+    socketNameSpace= io("/support")
+    group = "support"
 
 } else {    
-    socketNameSpace= io("/students")
-    group = "students"
+    socketNameSpace= io("/users")
+    group = "users"
 
 }
 
