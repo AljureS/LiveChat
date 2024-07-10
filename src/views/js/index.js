@@ -22,3 +22,19 @@ connectRoom3.addEventListener('click', () => {
 
 //send message
 const sendMessage = document.querySelector('#sendMessage')
+sendMessage.addEventListener('click', () => {
+    const message = prompt('Enter your message')
+
+    socket.emit('sendMessage', message)
+})
+
+//receive message
+socket.on(('newMessage'), (data)=>{
+    const {room } = data
+    const { message } = data
+
+    const li = document.createElement('li')
+    li.textContent = message
+
+    document.querySelector(`#${room}`).appendChild(li)
+})

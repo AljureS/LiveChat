@@ -21,6 +21,8 @@ async function bootstrap() {
     socket.connectedRoom = ''
 
     socket.on('joinRoom', (room)=>{
+      socket.leave(socket.connectedRoom)
+
       switch (room) {
         case 'room1':
           socket.join('room1'); //* Si la sala no existe se crea en automatico 
@@ -40,7 +42,11 @@ async function bootstrap() {
         default:
           break;
       }
+    })
 
+    socket.on('sendMessage', (message)=>{
+      const room = socket.connectedRoom
+      io.to(room).emit('newMessage', {message, room})
     })
 
   })
