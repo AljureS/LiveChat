@@ -19,3 +19,6 @@ connectRoom2.addEventListener('click', () => {
 connectRoom3.addEventListener('click', () => {
     socket.emit('joinRoom', 'room3')
 })
+
+//send message
+const sendMessage = document.querySelector('#sendMessage')
