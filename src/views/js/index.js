@@ -4,7 +4,7 @@ const user = prompt("Enter you user")
 
 const support =["Retax", "JuanDC", "Luis", "Sara"]
 
-let socketNameSpace, group; // va a ahcer la funcion de //* const socket =io()
+let socketNameSpace, group; // same as => //* const socket =io()
 
 const chat = document.querySelector('#chat')
 const namespace = document.querySelector('#namespace')
@@ -35,9 +35,13 @@ sendMessage.addEventListener("click", ()=> {
 
 socketNameSpace.on('message', (data)=> {
     const {user, msg} = data
-    const chat = document.querySelector('#chat')
 
+    const li = document.createElement('li')
+    li.textContent = `${user}: ${msg}`
     
+    chat.append(li)// chat was the ul connected in line 9
+
+
 })
 
 

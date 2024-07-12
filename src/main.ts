@@ -19,7 +19,7 @@ async function bootstrap() {
   const users = io.of('/users')  // Regular users namspace
   
   support.on('connect', (socket) => {
-    console.log(socket.id + "Connected to the support namespace");
+    console.log(socket.id + " Connected to the support namespace");
     
     socket.on('sendMessage', (data)=>{
       support.emit('message', data)
@@ -27,7 +27,7 @@ async function bootstrap() {
   })
   
   users.on('connect', (socket) => {
-    console.log(socket.id + "Connected to the users namespace");
+    console.log(socket.id + " Connected to the users namespace");
 
     socket.on('sendMessage', (data)=>{
       users.emit('message', data)
