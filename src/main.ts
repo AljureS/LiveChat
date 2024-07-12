@@ -17,7 +17,9 @@ async function bootstrap() {
   
   io.on('connection', (socket)=>{
 
-    
+    socket.on('is connected', (msg)=>{
+      console.log(msg);
+    })
 
   })
   
