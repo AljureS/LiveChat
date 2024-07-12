@@ -16,9 +16,9 @@ async function bootstrap() {
   const io = new Server(httpServer)
   
   io.on('connection', (socket)=>{
-
-    
-
+    socket.on("circle position", position => {
+      socket.broadcast.emit("move circle", position);
+    });
   })
   
   await app.init();
