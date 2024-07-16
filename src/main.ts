@@ -1,3 +1,8 @@
+// process.env.DEBUG = '*'
+// process.env.DEBUG =  'socket.io:socket'
+process.env.DEBUG =  'engine, socket.io:socket'
+
+
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { Server } from 'socket.io';

@@ -1,6 +1,6 @@
 const socket = io({
     auth: {
-        token: "mal"
+        token: "Mr Michi is the coolest"
     }
 })
 
