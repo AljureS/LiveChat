@@ -26,11 +26,13 @@
     "@nestjs/platform-socket.io": "^10.3.10",
     "@nestjs/serve-static": "^4.0.2",
     "@nestjs/websockets": "^10.3.10",
+    "@socket.io/admin-ui": "^0.5.1",
     "express": "^4.19.2",
     "reflect-metadata": "^0.2.0",
     "rxjs": "^7.8.1",
     "socket.io": "^4.7.5",
-    "socket.io-client": "^4.7.5"
+    "socket.io-client": "^4.7.5",
+    "socket.io-logger": "^0.0.2"
   },
   "devDependencies": {
     "@nestjs/cli": "^10.0.0",
