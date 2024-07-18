@@ -6,6 +6,10 @@ import { createServer } from 'http';
 import * as express from 'express';
 import { ExpressAdapter } from '@nestjs/platform-express';
 import { instrument } from '@socket.io/admin-ui';
+import { config as dotenvConfig } from 'dotenv';
+import * as bcrypt from 'bcrypt';
+
+dotenvConfig({path: '.env.development'})
 
 async function bootstrap() {
   const expressApp = express(); // Create an Express application
@@ -31,8 +35,14 @@ async function bootstrap() {
     transports: ['websocket', 'polling'], // Forzar el uso de WebSockets y habilitar polling como respaldo
   })
 
+  const passwordHash = await bcrypt.hash(process.env.PASSWORD_SOCKET, 12);
+
   instrument(io, {
-    auth: false
+    auth: {
+      type: 'basic',
+      username: process.env.USERNAME_SOCKET,
+      password: passwordHash,
+    }
   })
   
   io.on('connection', (socket)=>{
