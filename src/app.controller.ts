@@ -10,6 +10,6 @@ export class AppController {
   getIndex(@Res() res: Response) {
     const filePath = this.appService.getIndex();
     return res.sendFile(filePath);
-  }
+  } 
 
 }

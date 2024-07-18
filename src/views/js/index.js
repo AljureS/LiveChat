@@ -1,33 +1,8 @@
+
 const socket = io()
 
-const circle = document.querySelector("#circle");
-
-const drawCircle = position => {
-    circle.style.top = position.top;
-    circle.style.left = position.left;
-}
-
-const drag = e => {
-
-    const position =  {
-        top: e.clientY + "px",
-        left: e.clientX + "px"
-    };
-
-    drawCircle(position);
-    console.log("Se envia el evento al servidors");
-    socket.volatile.emit("circle position", position);
-
-}
-
-document.addEventListener("mousedown", e => {
-    document.addEventListener("mousemove", drag)
+socket.on('connect', () => {
+    console.log(`Connected to server with id: ${socket.id}`);
 });
 
-document.addEventListener("mouseup", e => {
-    document.removeEventListener("mousemove", drag);
-});
-
-socket.on("move circle", position => {
-    drawCircle(position);
-});
+// socket.emit('message', 'Hello from client!');
