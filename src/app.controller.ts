@@ -12,4 +12,10 @@ export class AppController {
     return res.sendFile(filePath);
   } 
 
+  @Get('register')
+  getRegister(@Res() res: Response) {
+    const filePath = this.appService.getRegister();
+    return res.sendFile(filePath);
+  }
+
 }
