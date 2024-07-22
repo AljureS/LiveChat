@@ -1,0 +1,88 @@
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    /* background-color: #f0f4f8; */
+    background: #606c88ef;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+.card {
+    max-width: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    border-radius: 0.5rem;
+    background: -webkit-linear-gradient(to right, #3f4c6b, #606c88);
+    background: linear-gradient(to right top, #3f4c6b, #606c88);
+    padding: 1rem;
+    color: rgb(107, 114, 128);
+    box-shadow: 0px 87px 78px -39px rgba(0,0,0,0.4);
+}
+.input {
+    max-width: 190px;
+    height: 44px;
+    background-color: #96949479;
+    border-radius: .5rem;
+    padding: 0 1rem;
+    border: 2px solid transparent;
+    font-size: 1rem;
+    transition: border-color .3s cubic-bezier(.25,.01,.25,1) 0s, color .3s cubic-bezier(.25,.01,.25,1) 0s,background .2s cubic-bezier(.25,.01,.25,1) 0s;
+}
+
+.label {
+    display: block;
+    margin-bottom: .3rem;
+    font-size: .9rem;
+    font-weight: bold;
+    color: #05060f99;
+    transition: color .3s cubic-bezier(.25,.01,.25,1) 0s;
+}
+
+.input:hover, .input:focus, .input-group:hover .input {
+    outline: none;
+    border-color: #05060f;
+}
+
+.input-group:hover .label, .input:focus {
+    color: #05060fc2;
+}
+
+button {
+    margin-top: 14px;
+    margin-left: 10px;
+    padding: 0.1em 0.25em;
+    width: 13em;
+    height: 4.2em;
+    background-color: #3f4c6b;
+    border: 0.08em solid #fff;
+    border-radius: 0.3em;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+button span {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    bottom: 0.4em;
+    width: 8.25em;
+    height: 2.5em;
+    background-color: #606c88;
+    border-radius: 0.2em;
+    font-size: 1.5em;
+    color: #fff;
+    border: 0.08em solid #fff;
+    box-shadow: 0 0.4em 0.1em 0.019em #fff;
+}
+
+button span:hover {
+    transition: all 0.5s;
+    transform: translate(0, 0.4em);
+    box-shadow: 0 0 0 0 #fff;
+}
+
+button span:not(hover) {
+    transition: all 1s;
+}
