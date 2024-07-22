@@ -1,11 +1,13 @@
 const login = document.querySelector('#login');
 
 login.addEventListener('click', () => {
-    const user = document.querySelector('#username').value;
+    const username = document.querySelector('#username').value;
 
-    if (user != "") {
-        document.cookie = `username=${user}`
-        document.location.href="../"
-    } else alert ('Please, write your username')
-    
-})
+    if (username !== "") {
+        document.cookie = `username=${username}; path=/`;
+        document.location.href = "/chat";
+    } else {
+        alert('Please, write your username');
+    }
+});
+
