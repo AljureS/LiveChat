@@ -9,6 +9,7 @@ import { instrument } from '@socket.io/admin-ui';
 import { config as dotenvConfig } from 'dotenv';
 import * as bcrypt from 'bcrypt';
 import { join } from 'path';
+import { log } from 'console';
 
 dotenvConfig({path: '.env.development'})
 
@@ -20,14 +21,19 @@ async function bootstrap() {
   // const httpServer = createServer(expressApp);
 
   app.enableCors({
-    origin: '*',
+    origin: ["https://admin.socket.io"],
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE', 
     credentials: true,
   });
 
   app.useStaticAssets(join(__dirname, '..', 'src', 'views'))
 
-  await app.listen(3001); 
+   // Guardar la instancia de la aplicación en una variable global
+  global['app'] = app;
+  
+  await app.listen(3000);
+  console.log(`Application is running on: ${await app.getUrl()}`);
+  
 
 }
 bootstrap();
