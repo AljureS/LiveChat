@@ -24,8 +24,9 @@ export class SocketsGateway implements OnGatewayInit,  OnGatewayConnection, OnGa
   @WebSocketServer() server: Server;
   private logger: Logger = new Logger('SocketsGateway');
 
+  //afte Init configures the server
   async afterInit(server: Server){
-    // Obtener y hashear la contraseña de forma asíncrona
+    // // Obtener y hashear la contraseña de forma asíncrona
     const passwordHash = await bcrypt.hash(process.env.PASSWORD_SOCKET || '', 12);
 
     // Instrumentar el servidor con admin-ui
@@ -37,19 +38,18 @@ export class SocketsGateway implements OnGatewayInit,  OnGatewayConnection, OnGa
       }
     });
 
-    this.logger.log('Socket server initialized');
+    this.logger.log('Socket gateway initialized');
   }
 
   handleConnection(client: Socket) {
-    this.logger.log(`Client connected: ${client.id}`);
-    this.logger.log('Client connected by transport: ' + client.conn.transport.name);
+    console.log(`Client connected: ${client.id}`);
+    console.log('Client connectetd by transport: ' + client.conn.transport.name);
+    setTimeout(() => {
+      console.log('Client connectetd by transport: ' + client.conn.transport.name);
+    }, 1000)
 
     client.on('disconnect', (reason) => {
-      this.logger.log(`Client disconnected: ${client.id}, Reason: ${reason}`);
-    });
-
-    client.on('error', (error) => {
-      this.logger.error(`Socket error: ${error}`);
+      console.log(`Client disconnected: ${client.id}, Reason: ${reason}`);
     });
   }
 
