@@ -16,7 +16,7 @@ dotenvConfig({path: '.env.development'})
 async function bootstrap() {
   // const expressApp = express(); 
   // const adapter = new ExpressAdapter(expressApp); 
-  const app = await NestFactory.create<NestExpressApplication>(AppModule);
+  const app = await NestFactory.create(AppModule);
 
   // const httpServer = createServer(expressApp);
 
@@ -26,7 +26,7 @@ async function bootstrap() {
     credentials: true,
   });
 
-  app.useStaticAssets(join(__dirname, '..', 'src', 'views'))
+  // app.useStaticAssets(join(__dirname, '..', 'src', 'views'))
 
    // Guardar la instancia de la aplicación en una variable global
   global['app'] = app;

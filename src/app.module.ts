@@ -5,7 +5,8 @@ import { AppService } from './app.service';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path';
 import { SocketsModule } from './sockets/sockets.module';
-import { SocketsService } from './sockets/sockets.service';
+import { SocketsGateway } from './sockets/sockets.gateway';
+// import { SocketsService } from './sockets/sockets.service';
 
 @Module({
   imports: [
@@ -16,7 +17,7 @@ import { SocketsService } from './sockets/sockets.service';
   ],
   controllers: [AppController],
   providers: [
-    SocketsService,
+    SocketsGateway,
     AppService
   ],
 })
