@@ -4,12 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/chat.css">
     <title>Live Chat</title>
 </head>
 <body>
     <header>
         <h1>The Said Live Chat</h1>
     </header>
+
+    <main>
+
+        <div id="all-messages"></div>
+
+        <div class="send-message">
+            <input type="text" id="message">
+            <button type="submit" id="send-message" class="btn secondary">Send</button>
+        </div>
+    </main>
 
     <script src="/socket.io/socket.io.js"></script>
     <script src="/js/index.js"></script>

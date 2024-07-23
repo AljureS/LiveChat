@@ -17,7 +17,6 @@ import { SocketsGateway } from './sockets/sockets.gateway';
   ],
   controllers: [AppController],
   providers: [
-    SocketsGateway,
     AppService
   ],
 })

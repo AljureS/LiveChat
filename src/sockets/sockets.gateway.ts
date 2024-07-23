@@ -5,11 +5,14 @@ import {
   OnGatewayInit,
   OnGatewayConnection,
   OnGatewayDisconnect,
+  ConnectedSocket,
+  MessageBody,
 } from '@nestjs/websockets';
 import { Server, Socket } from 'socket.io';
 import { Logger } from '@nestjs/common';
 import { instrument } from '@socket.io/admin-ui';
 import * as bcrypt from 'bcrypt';
+import { userInfo } from 'os';
 
 @WebSocketGateway({
   cors: {
@@ -26,7 +29,7 @@ export class SocketsGateway implements OnGatewayInit,  OnGatewayConnection, OnGa
 
   //afte Init configures the server
   async afterInit(server: Server){
-    // // Obtener y hashear la contraseña de forma asíncrona
+    // Obtener y hashear la contraseña de forma asíncrona
     const passwordHash = await bcrypt.hash(process.env.PASSWORD_SOCKET || '', 12);
 
     // Instrumentar el servidor con admin-ui
@@ -55,5 +58,20 @@ export class SocketsGateway implements OnGatewayInit,  OnGatewayConnection, OnGa
 
   handleDisconnect(client: Socket) {
     this.logger.log(`Client disconnected: ${client.id}`);
+  }
+
+  @SubscribeMessage('message')
+  handleMessage(@ConnectedSocket() client: Socket, @MessageBody() message){
+
+    const cookie = client.handshake.headers.cookie;
+    const username = cookie.split("=").pop();
+    this.logger.log(`Message from ${username}: ${message}`);
+
+    this.server.emit('message', {
+      user: username,
+      message
+    });
+
+
   }
 }
