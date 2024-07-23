@@ -7,17 +7,18 @@ import { AuthGuard } from './auth/auth.guard';
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
+  @Get('register')
+  getRegister(@Res() res: Response) {
+    const filePath = this.appService.getRegister();
+    return res.sendFile(filePath);
+  }
+  
   @Get()
   @UseGuards(AuthGuard)
   getIndex(@Res() res: Response) {
     const filePath = this.appService.getIndex();
     return res.sendFile(filePath);
   } 
-
-  @Get('register')
-  getRegister(@Res() res: Response) {
-    const filePath = this.appService.getRegister();
-    return res.sendFile(filePath);
-  }
+  
 
 }

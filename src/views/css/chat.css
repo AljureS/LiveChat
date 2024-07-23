@@ -1,4 +1,4 @@
-img{
+img {
     width: 56px;
 }
 
@@ -18,7 +18,7 @@ img{
 
 .message .message-body {
     margin-left: 10px;
-    width: calc(100% - 50px)
+    width: calc(100% - 50px);
 }
 
 .message .message-body .user-info {
@@ -26,18 +26,19 @@ img{
 }
 
 .message .message-body .user-info .time {
-    color: #a19c9c;
+    color: #96949479; /* Actualizado al color del segundo CSS */
     font-size: 13px;
 }
 
 .message .message-body p {
     margin-top: 5px;
-    color: #313131;
+    color: #05060f99; /* Actualizado al color del segundo CSS */
     font-size: 14px;
 }
 
 .send-message {
-    background: #3F51B5;
+    background: -webkit-linear-gradient(to right, #3f4c6b, #606c88);
+    background: linear-gradient(to right top, #3f4c6b, #606c88); /* Gradiente del segundo CSS */
     padding: 10px;
     display: flex;
 }
@@ -45,8 +46,54 @@ img{
 .send-message input {
     width: 100%;
     padding: 7px 5px;
+    background-color: #96949479; /* Fondo del segundo CSS */
+    border-radius: .5rem;
+    border: 2px solid transparent;
+    font-size: 1rem;
+    transition: border-color .3s cubic-bezier(.25,.01,.25,1) 0s, color .3s cubic-bezier(.25,.01,.25,1) 0s, background .2s cubic-bezier(.25,.01,.25,1) 0s;
+}
+
+.send-message input:hover,
+.send-message input:focus {
+    outline: none;
+    border-color: #05060f;
+    color: #05060fc2;
 }
 
 .send-message button {
     margin-left: 10px;
+    padding: 0.1em 0.25em;
+    background-color: #3f4c6b; /* Color de fondo del segundo CSS */
+    border: 0.08em solid #fff;
+    border-radius: 0.3em;
+    font-size: 12px;
+    cursor: pointer;
+    width: 13em;
+    height: 4.2em;
+}
+
+.send-message button span {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    bottom: 0.4em;
+    width: 8.25em;
+    height: 2.5em;
+    background-color: #606c88; /* Fondo del segundo CSS */
+    border-radius: 0.2em;
+    font-size: 1.5em;
+    color: #fff;
+    border: 0.08em solid #fff;
+    box-shadow: 0 0.4em 0.1em 0.019em #fff;
+}
+
+.send-message button span:hover {
+    transition: all 0.5s;
+    transform: translate(0, 0.4em);
+    box-shadow: 0 0 0 0 #fff;
+}
+
+.send-message button span:not(hover) {
+    transition: all 1s;
 }
