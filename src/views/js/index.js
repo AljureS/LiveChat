@@ -4,6 +4,13 @@ const socket = io();
 const send = document.querySelector('#send-message');
 const allMessages = document.querySelector('#all-messages');
 
+function getCurrentTime(){
+    const now = new Date();
+    const hours = now.getHours().toString().padStart(2, '0');
+    const minutes = now.getMinutes().toString().padStart(2, '0');
+    return `${hours}:${minutes}`;
+}
+
 send.addEventListener('click', () => {
     const message = document.querySelector('#message');
 
@@ -13,6 +20,7 @@ send.addEventListener('click', () => {
 })
 
 socket.on("message", ({user, message}) => {
+    const time = getCurrentTime();
     const msg = document.createRange().createContextualFragment(`
         <div class="message">
             <div class="image-container">
@@ -21,7 +29,7 @@ socket.on("message", ({user, message}) => {
             <div class="message-body">
                 <div class="user-info">
                     <span class="username">${user}</span>
-                    <span class="time">Send 1 seg ago</span>
+                    <span class="time">Send at: ${time}</span>
             </div>
             <p>${message}</p>
             </div>
