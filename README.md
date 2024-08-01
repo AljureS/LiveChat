@@ -31,6 +31,3 @@ npm run start:dev
 ```
 ### 🔍 Usage
 After starting the server, open your browser and navigate to http://localhost:3000/register to see the application in action. You can open multiple tabs or different browsers to test the real-time communication features.
-
-### 💡 Contributing
-Contributions are always welcome! 🙌 Feel free to submit a pull request or open an issue for any bugs, features, or improvements.
